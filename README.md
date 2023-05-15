@@ -1,112 +1,113 @@
 # Stable Diffusion web UI
-A browser interface based on Gradio library for Stable Diffusion.
+基於用於穩定擴散的 Gradio 庫的瀏覽器界面。
 
 ![](screenshot.png)
 
 ## Features
-[Detailed feature showcase with images](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features):
-- Original txt2img and img2img modes
-- One click install and run script (but you still must install python and git)
-- Outpainting
-- Inpainting
-- Color Sketch
-- Prompt Matrix
-- Stable Diffusion Upscale
-- Attention, specify parts of text that the model should pay more attention to
-    - a man in a `((tuxedo))` - will pay more attention to tuxedo
-    - a man in a `(tuxedo:1.21)` - alternative syntax
-    - select text and press `Ctrl+Up` or `Ctrl+Down` to automatically adjust attention to selected text (code contributed by anonymous user)
-- Loopback, run img2img processing multiple times
-- X/Y/Z plot, a way to draw a 3 dimensional plot of images with different parameters
-- Textual Inversion
-    - have as many embeddings as you want and use any names you like for them
-    - use multiple embeddings with different numbers of vectors per token
-    - works with half precision floating point numbers
-    - train embeddings on 8GB (also reports of 6GB working)
-- Extras tab with:
-    - GFPGAN, neural network that fixes faces
-    - CodeFormer, face restoration tool as an alternative to GFPGAN
-    - RealESRGAN, neural network upscaler
-    - ESRGAN, neural network upscaler with a lot of third party models
-    - SwinIR and Swin2SR ([see here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/2092)), neural network upscalers
-    - LDSR, Latent diffusion super resolution upscaling
-- Resizing aspect ratio options
-- Sampling method selection
-    - Adjust sampler eta values (noise multiplier)
-    - More advanced noise setting options
-- Interrupt processing at any time
-- 4GB video card support (also reports of 2GB working)
-- Correct seeds for batches
-- Live prompt token length validation
-- Generation parameters
-     - parameters you used to generate images are saved with that image
-     - in PNG chunks for PNG, in EXIF for JPEG
-     - can drag the image to PNG info tab to restore generation parameters and automatically copy them into UI
-     - can be disabled in settings
-     - drag and drop an image/text-parameters to promptbox
-- Read Generation Parameters Button, loads parameters in promptbox to UI
-- Settings page
-- Running arbitrary python code from UI (must run with `--allow-code` to enable)
-- Mouseover hints for most UI elements
-- Possible to change defaults/mix/max/step values for UI elements via text config
-- Tiling support, a checkbox to create images that can be tiled like textures
-- Progress bar and live image generation preview
-    - Can use a separate neural network to produce previews with almost none VRAM or compute requirement
-- Negative prompt, an extra text field that allows you to list what you don't want to see in generated image
-- Styles, a way to save part of prompt and easily apply them via dropdown later
-- Variations, a way to generate same image but with tiny differences
-- Seed resizing, a way to generate same image but at slightly different resolution
-- CLIP interrogator, a button that tries to guess prompt from an image
-- Prompt Editing, a way to change prompt mid-generation, say to start making a watermelon and switch to anime girl midway
-- Batch Processing, process a group of files using img2img
+[帶有圖像的詳細功能展示](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features):
+- 原始的 txt2img 和 img2img 模式
+- 一鍵安裝並運行腳本（但您仍然必須安裝 python 和 git）
+- 塗裝
+- 修復
+- 彩色素描
+- 提示矩陣
+- 穩定擴散高檔
+- 注意，指定模型應該更多注意的文檔部分
+     - 穿著 `((tuxedo))` 的男人 - 會更加註意燕尾服
+     - 穿著 `(tuxedo:1.21)` 的男人 - 替代語法
+     - 選擇文本並按 `Ctrl+Up` 或 `Ctrl+Down` 自動調整對所選文本的關注（代碼由匿名用戶提供）
+- Loopback，多次運行img2img處理
+- X/Y/Z 圖，一種繪製具有不同參數的 3 維圖像圖的方法
+- 文本倒置
+     - 擁有任意數量的嵌入，並為它們使用任何你喜歡的名稱
+     - 使用每個標記具有不同數量向量的多個嵌入
+     - 適用於半精度浮點數
+     - 在 8GB 上訓練嵌入（還有 6GB 工作報告）
+- 附加選項卡：
+     - GFPGAN，修復人臉的神經網絡
+     - CodeFormer，面部修復工具作為 GFPGAN 的替代品
+     - RealESRGAN，神經網絡升級器
+     - ESRGAN，具有大量第三方模型的神經網絡升級器
+     - SwinIR 和 Swin2SR（[參見此處](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/2092)），神經網絡升頻器
+     - LDSR，潛在擴散超分辨率升級
+- 調整寬高比選項
+- 取樣方法選擇
+     - 調整採樣器 eta 值（噪聲倍增器）
+     - 更高級的噪音設置選項
+- 隨時中斷處理
+- 4GB 視頻卡支持（還有 2GB 工作報告）
+- 正確的批次種子
+- 實時提示令牌長度驗證
+- 生成參數
+      - 用於生成圖像的參數與該圖像一起保存
+      - 在 PNG 的 PNG 塊中，在 JPEG 的 EXIF 中
+      - 可將圖片拖拽至PNG信息標籤，恢復生成參數並自動複製到UI中
+      - 可以在設置中禁用
+      - 將圖像/文本參數拖放到提示框
+- 讀取生成參數按鈕，將提示框中的參數加載到 UI
+- 設置頁面
+- 從 UI 運行任意 python 代碼（必須使用 `--allow-code` 運行才能啟用）
+- 大多數 UI 元素的鼠標懸停提示
+- 可以通過文本配置更改 UI 元素的默認值/混合/最大/步進值
+- 平鋪支持，用於創建可以像紋理一樣平舖的圖像的複選框
+- 進度條和實時圖像生成預覽
+     - 可以使用單獨的神經網絡來生成幾乎沒有 VRAM 或計算要求的預覽
+- 否定提示，一個額外的文本字段，允許您列出您不想在生成的圖像中看到的內容
+- 樣式，一種保存部分提示並稍後通過下拉菜單輕鬆應用它們的方法
+- 變體，一種生成相同圖像但有微小差異的方法
+- 調整種子大小，一種生成相同圖像但分辨率略有不同的方法
+- CLIP 詢問器，一個嘗試從圖像中猜測提示的按鈕
+- Prompt Editing，一種改變prompt mid-generation的方法，說開始製作西瓜併中途切換到動漫女孩
+- 批處理，使用 img2img 處理一組文件
 - Img2img Alternative, reverse Euler method of cross attention control
-- Highres Fix, a convenience option to produce high resolution pictures in one click without usual distortions
-- Reloading checkpoints on the fly
-- Checkpoint Merger, a tab that allows you to merge up to 3 checkpoints into one
+- Highres Fix，一個方便的選項，可以一鍵生成高分辨率圖片而不會出現通常的失真
+- 即時重新加載檢查點
+- 檢查點合併，一個允許您將最多 3 個檢查點合併為一個的選項卡
 - [Custom scripts](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Custom-Scripts) with many extensions from community
 - [Composable-Diffusion](https://energy-based-model.github.io/Compositional-Visual-Generation-with-Composable-Diffusion-Models/), a way to use multiple prompts at once
      - separate prompts using uppercase `AND`
      - also supports weights for prompts: `a cat :1.2 AND a dog AND a penguin :2.2`
-- No token limit for prompts (original stable diffusion lets you use up to 75 tokens)
-- DeepDanbooru integration, creates danbooru style tags for anime prompts
-- [xformers](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Xformers), major speed increase for select cards: (add `--xformers` to commandline args)
-- via extension: [History tab](https://github.com/yfszzx/stable-diffusion-webui-images-browser): view, direct and delete images conveniently within the UI
-- Generate forever option
-- Training tab
-     - hypernetworks and embeddings options
-     - Preprocessing images: cropping, mirroring, autotagging using BLIP or deepdanbooru (for anime)
-- Clip skip
-- Hypernetworks
-- Loras (same as Hypernetworks but more pretty)
-- A sparate UI where you can choose, with preview, which embeddings, hypernetworks or Loras to add to your prompt 
-- Can select to load a different VAE from settings screen
-- Estimated completion time in progress bar
+- 提示沒有令牌限制（原始穩定擴散讓您最多使用 75 個令牌）
+- DeepDanbooru 集成，為動漫提示創建 danbooru 風格標籤
+- [xformers](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Xformers)，選擇卡片的主要速度提升：（添加 `--xformers` 到命令行參數）
+- 通過擴展：[歷史選項卡](https://github.com/yfszzx/stable-diffusion-webui-images-browser)：在 UI 中方便地查看、定向和刪除圖像
+- 生成永久選項
+- 培訓標籤
+      - 超網絡和嵌入選項
+      - 預處理圖像：使用 BLIP 或 deepdanbooru（用於動漫）裁剪、鏡像、自動標記
+- 剪輯跳過
+- 超級網絡
+- Loras（與 Hypernetworks 相同但更漂亮）
+- 一個單獨的 UI，您可以在其中選擇帶有預覽的嵌入、超網絡或 Loras 以添加到您的提示中
+- 可以選擇從設置屏幕加載不同的 VAE
+- 進度條中的預計完成時間
 - API
-- Support for dedicated [inpainting model](https://github.com/runwayml/stable-diffusion#inpainting-with-stable-diffusion) by RunwayML
-- via extension: [Aesthetic Gradients](https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-gradients), a way to generate images with a specific aesthetic by using clip images embeds (implementation of [https://github.com/vicgalle/stable-diffusion-aesthetic-gradients](https://github.com/vicgalle/stable-diffusion-aesthetic-gradients))
-- [Stable Diffusion 2.0](https://github.com/Stability-AI/stablediffusion) support - see [wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#stable-diffusion-20) for instructions
-- [Alt-Diffusion](https://arxiv.org/abs/2211.06679) support - see [wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#alt-diffusion) for instructions
-- Now without any bad letters!
-- Load checkpoints in safetensors format
-- Eased resolution restriction: generated image's domension must be a multiple of 8 rather than 64
-- Now with a license!
-- Reorder elements in the UI from settings screen
+- 支持 RunwayML 的專用[修復模型](https://github.com/runwayml/stable-diffusion#inpainting-with-stable-diffusion)
+- 通過擴展：[Aesthetic Gradients](https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-gradients)，一種通過使用剪輯圖像嵌入生成具有特定美感的圖像的方法（[https: //github.com/vicgalle/stable-diffusion-aesthetic-gradients](https://github.com/vicgalle/stable-diffusion-aesthetic-gradients))
+- [穩定擴散 2.0](https://github.com/Stability-AI/stablediffusion) 支持 - 請參閱 [wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#stable- diffusion-20) 的說明
+- [Alt-Diffusion](https://arxiv.org/abs/2211.06679) 支持 - 參見 [wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#alt-diffusion) 對於指示
+- 現在沒有任何不良信件！
+- 以安全張量格式加載檢查點
+- 放寬分辨率限制：生成圖像的維度必須是 8 的倍數而不是 64
+- 現在有了執照！
+- 從設置屏幕重新排序 UI 中的元素
 
 ## Installation and Running
-Make sure the required [dependencies](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Dependencies) are met and follow the instructions available for both [NVidia](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Install-and-Run-on-NVidia-GPUs) (recommended) and [AMD](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Install-and-Run-on-AMD-GPUs) GPUs.
+確保滿足所需的 [dependencies](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Dependencies) 並遵循適用於 [NVidia](https://github.com/AUTOMATIC1111) 的說明 /stable-diffusion-webui/wiki/Install-and-Run-on-NVidia-GPUs）（推薦）
+和 [AMD](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Install-and -在 AMD-GPU 上運行）GPU。
 
-Alternatively, use online services (like Google Colab):
+或者，使用在線服務（如 Google Colab）：
 
 - [List of Online Services](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Online-Services)
 
 ### Automatic Installation on Windows
-1. Install [Python 3.10.6](https://www.python.org/downloads/release/python-3106/) (Newer version of Python does not support torch), checking "Add Python to PATH".
-2. Install [git](https://git-scm.com/download/win).
-3. Download the stable-diffusion-webui repository, for example by running `git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git`.
-4. Run `webui-user.bat` from Windows Explorer as normal, non-administrator, user.
+1. 安裝[Python 3.10.6](https://www.python.org/downloads/release/python-3106/)（較新版本的Python不支持torch），勾選“Add Python to PATH”。
+2. 安裝 [git](https://git-scm.com/download/win)。
+3. 下載 stable-diffusion-webui 存儲庫，例如通過運行 `git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git`。
+4. 以普通非管理員用戶身份從 Windows 資源管理器運行 `webui-user.bat`。
 
 ### Automatic Installation on Linux
-1. Install the dependencies:
+1.安裝依賴：
 ```bash
 # Debian-based:
 sudo apt install wget git python3 python3-venv
@@ -115,12 +116,12 @@ sudo dnf install wget git python3
 # Arch-based:
 sudo pacman -S wget git python3
 ```
-2. Navigate to the directory you would like the webui to be installed and execute the following command:
+2. 導航到您希望安裝 webui 的目錄並執行以下命令：
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh)
 ```
-3. Run `webui.sh`.
-4. Check `webui-user.sh` for options.
+3. 運行`webui.sh`。
+4. 檢查 `webui-user.sh` 的選項。
 ### Installation on Apple Silicon
 
 Find the instructions [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon).
